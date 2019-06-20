@@ -1,2 +1,1 @@
-# rz_ryu
-xi-liu
+＃some groonga log
