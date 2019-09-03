@@ -1,6 +1,7 @@
 curlでhtmlの内容を取得する
 普通にURLアクセスしてhttpのレスポンスした文字列を取得する方法です。APIに接続するときとかスクレイピングなんかの土台部分になるかと思います。
 
+~~~
 <?php
 // gethtml.php
 $base_url = 'https://www.google.co.jp/';
@@ -15,11 +16,14 @@ $response = curl_exec($curl);
 curl_close($curl);
 
 echo $response;
+~~~
+
 ブラウザーでこのPHPでアクセスするとアクセス先の内容がそのまま表示されると思います。phpからコマンドラインで叩くと普通に文字列だけ返ってきます。
 
 ヘッダー、ステータスを取得する
 httpのレスポンスヘッダーも取得したいときは、CURLOPT_HEADERで取得します。
 
+~~~
 <?php
 
 $base_url = 'https://www.google.co.jp/';
@@ -35,8 +39,11 @@ $response = curl_exec($curl);
 curl_close($curl);
 
 echo $response;
+~~~
+
 実行すると、
 
+~~~
 HTTP/1.1 200 OK
 Date: Wed, 20 Jul 2016 01:17:27 GMT
 Expires: -1
@@ -53,11 +60,14 @@ Accept-Ranges: none
 Vary: Accept-Encoding
 Transfer-Encoding: chunked
 ....
+~~~
+
 こんな感じで普通にヘッダーが取得できます。
 
 POSTする
 これだと画像投稿とかに対応してませんが、文字列だけならいけます。
 
+~~~
 $base_url = 'http://example.com/';
 $data = 'test1=aaa&test2=bbb';
 
@@ -69,3 +79,4 @@ $response = curl_exec($curl);
 curl_close($curl);
 
 echo $response;
+~~~
